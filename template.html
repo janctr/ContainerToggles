@@ -1,0 +1,19 @@
+<div qv-extension class="container-toggles">
+    <div class="toggle-container">
+        <div ng-repeat="toggleControl in masterItemToggles track by $index">
+            <!-- <label class="lui-label">{{ toggleControl.title }}</label> -->
+            <lui-checkbox x-model="toggleControl.isHidden" ng-click="toggleCheckbox($index)">{{
+                toggleControl.title
+                }}
+                hidden: {{
+                toggleControl.isHidden }}</lui-checkbox>
+        </div>
+
+
+    </div>
+    <div class="container">
+        <div ng-repeat="masterItem in masterItems track by $index" ng-show="masterItemToggles[$index].isHidden"
+            id="{{ getQlikObjectContainerId($index) }}">
+        </div>
+    </div>
+</div>

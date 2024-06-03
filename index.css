@@ -1,0 +1,30 @@
+.container-toggles * {
+    box-sizing: border-box;
+}
+
+.container-toggles {
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.container-toggles > .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-toggles > .container > div {
+    border: 1px solid black;
+    flex: 25%;
+    height: 50%;
+}
+
+.container-toggles > .toggle-container {
+    display: flex;
+}
+
+.toggle-container > button {
+    padding: 1rem;
+}
