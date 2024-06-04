@@ -35,6 +35,9 @@ define(['qlik', './utils'], function (qlik, Util) {
         component: 'accordion',
         items: {
             masterItems,
+            appearance: {
+                uses: 'settings',
+            },
         },
     };
 });
