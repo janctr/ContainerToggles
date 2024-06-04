@@ -36,9 +36,54 @@
     flex-wrap: wrap;
 }
 
-.container-toggles > .container > div {
+.container-toggles > .container > .tile {
     /* border: 1px solid black; */
     flex: 25%;
+    width: auto;
     height: 50%;
+    position: relative;
+
+    transition: all 0.5s ease-in-out;
+}
+
+.container-toggles > .container > .tile.fullscreen {
+    flex: 1;
+    height: 100% !important;
+}
+
+.container-toggles > .container > .tile > .fullscreen-button {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+
+    visibility: hidden;
+}
+
+.container-toggles > .container > .tile > .fullscreen-button > img {
+    width: 100%;
+    height: 100%;
+}
+
+.container-toggles > .container > .tile:hover > .fullscreen-button {
+    visibility: visible;
+}
+
+.container-toggles > .container > .tile > .fullscreen-button:hover {
+    cursor: pointer;
+}
+
+.container-toggles .hide,
+.container-toggles .hide-tile {
+    /* visibility: hidden; */
+    /* display: none; */
+    overflow: hidden !important;
+    flex: 0 !important;
+    width: 0 !important;
+}
+.container-toggles .tile:hover .hide-button {
+    visibility: hidden !important;
 }
 /*********************/

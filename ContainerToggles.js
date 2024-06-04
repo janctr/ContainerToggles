@@ -8,6 +8,17 @@ define([
         return `${layout.qInfo.qId}_QV_${index}`;
     }
 
+    function setFullscreen(containerId) {
+        $('.tile').toggleClass('hide');
+
+        $(`#${containerId}`).toggleClass('hide').toggleClass('fullscreen');
+    }
+
+    function exitFullscreen() {
+        $('.hide').toggleClass('hide');
+        $('.fullscreen').toggleClass('fullscreen');
+    }
+
     function placeQlikObject(containerId, qlikObjectId) {
         qlik.currApp()
             .getObject(containerId, qlikObjectId)
@@ -15,6 +26,37 @@ define([
                 console.log(
                     `Placing Qlik object (${qlikObjectId}) into container (${containerId})`
                 );
+
+                const fullscreenButton = $(`
+                    <div class="fullscreen-button">
+                        <img src="https://qlik.advana.data.mil/extensions/ContainerToggles/fullscreen-icon.png" />
+                    </div>
+                    `);
+
+                const exitFullscreenButton = $(`
+                    <div class="fullscreen-button">
+                        <img src="https://qlik.advana.data.mil/extensions/ContainerToggles/exit-fullscreen-icon.png" />
+                    </div>
+                `);
+
+                exitFullscreenButton.css('width', '30px');
+                exitFullscreenButton.css('height', '30px');
+                exitFullscreenButton.toggleClass('hide-button');
+
+                fullscreenButton.click(() => {
+                    exitFullscreenButton.toggleClass('hide-button');
+                    fullscreenButton.toggleClass('hide-button');
+                    setFullscreen(containerId);
+                });
+
+                exitFullscreenButton.click(() => {
+                    exitFullscreenButton.toggleClass('hide-button');
+                    fullscreenButton.toggleClass('hide-button');
+                    exitFullscreen();
+                });
+
+                $(`#${containerId}`).append(fullscreenButton);
+                $(`#${containerId}`).append(exitFullscreenButton);
             });
     }
 
@@ -50,7 +92,7 @@ define([
                     (masterItem, index) => ({
                         id: index,
                         title: masterItem.masterItemTitle || 'Title',
-                        isHidden: true,
+                        isShowing: true,
                     })
                 );
 
