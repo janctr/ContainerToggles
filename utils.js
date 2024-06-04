@@ -37,7 +37,9 @@ define(['qlik'], function (qlik) {
                     console.log('masterOpts: ', masterOpts);
                     return resolve([
                         { value: '', label: 'Choose master item' },
-                        ...masterOpts,
+                        ...masterOpts.sort((a, b) =>
+                            a.label.localeCompare(b.label)
+                        ),
                     ]);
                 });
             });
