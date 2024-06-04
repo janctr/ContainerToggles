@@ -28,6 +28,23 @@ define(['qlik', './utils'], function (qlik, Util) {
                 defaultValue: '',
                 options: getMasterObjects(),
             },
+            isHiddenInitially: {
+                type: 'boolean',
+                component: 'switch',
+                label: 'Hide by default',
+                defaultValue: false,
+                ref: 'isHiddenInitially',
+                options: [
+                    {
+                        value: true,
+                        label: 'Hidden',
+                    },
+                    {
+                        value: false,
+                        label: 'Showing',
+                    },
+                ],
+            },
         },
     };
     return {

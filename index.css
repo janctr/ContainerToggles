@@ -83,7 +83,8 @@
     flex: 0 !important;
     width: 0 !important;
 }
-.container-toggles .tile:hover .hide-button {
+.container-toggles .tile:hover .hide-button,
+.container-toggles .tile:hover .hide-button > img {
     visibility: hidden !important;
 }
 /*********************/

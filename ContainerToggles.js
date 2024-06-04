@@ -87,12 +87,18 @@ define([
             '$scope',
             function ($scope) {
                 //add your rendering code here
-                $scope.masterItems = $scope.layout.masterItems;
+                $scope.masterItems = $scope.layout.masterItems.filter(
+                    (masterItem) => !masterItem.isHiddenInitially
+                );
+
                 $scope.masterItemToggles = $scope.layout.masterItems.map(
                     (masterItem, index) => ({
                         id: index,
                         title: masterItem.masterItemTitle || 'Title',
-                        isShowing: true,
+                        isShowing:
+                            typeof masterItem.isHiddenInitially !== 'undefined'
+                                ? !masterItem.isHiddenInitially
+                                : true,
                     })
                 );
 
