@@ -87,9 +87,7 @@ define([
             '$scope',
             function ($scope) {
                 //add your rendering code here
-                $scope.masterItems = $scope.layout.masterItems.filter(
-                    (masterItem) => !masterItem.isHiddenInitially
-                );
+                $scope.masterItems = $scope.layout.masterItems;
 
                 $scope.masterItemToggles = $scope.layout.masterItems.map(
                     (masterItem, index) => ({
