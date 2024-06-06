@@ -8,6 +8,22 @@ define([
         return `${layout.qInfo.qId}_QV_${index}`;
     }
 
+    function getFullScreenIconUrl() {
+        if (window.location.href.indexOf('.smil.mil') > 0) {
+            return 'https://qlik.advana.data.smil.mil/extensions/ContainerToggles/fullscreen-icon.png';
+        }
+
+        return 'https://qlik.advana.data.mil/extensions/ContainerToggles/fullscreen-icon.png';
+    }
+
+    function getExitFullscreenIconUrl() {
+        if (window.location.href.indexOf('.smil.mil') > 0) {
+            return 'https://qlik.advana.data.smil.mil/extensions/ContainerToggles/exit-fullscreen-icon.png';
+        }
+
+        return 'https://qlik.advana.data.mil/extensions/ContainerToggles/exit-fullscreen-icon.png';
+    }
+
     function setFullscreen(containerId) {
         $('.tile').toggleClass('hide');
 
@@ -29,13 +45,13 @@ define([
 
                 const fullscreenButton = $(`
                     <div class="fullscreen-button">
-                        <img src="https://qlik.advana.data.mil/extensions/ContainerToggles/fullscreen-icon.png" />
+                        <img src="${getFullScreenIconUrl()}" />
                     </div>
                     `);
 
                 const exitFullscreenButton = $(`
                     <div class="fullscreen-button">
-                        <img src="https://qlik.advana.data.mil/extensions/ContainerToggles/exit-fullscreen-icon.png" />
+                        <img src="${getExitFullscreenIconUrl()}" />
                     </div>
                 `);
 
