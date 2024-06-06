@@ -50,13 +50,11 @@ define([
                     `);
 
                 const exitFullscreenButton = $(`
-                    <div class="fullscreen-button">
+                    <div class="fullscreen-button exit">
                         <img src="${getExitFullscreenIconUrl()}" />
                     </div>
                 `);
 
-                exitFullscreenButton.css('width', '30px');
-                exitFullscreenButton.css('height', '30px');
                 exitFullscreenButton.toggleClass('hide-button');
 
                 fullscreenButton.click(() => {

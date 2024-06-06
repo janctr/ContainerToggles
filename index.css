@@ -53,13 +53,31 @@
 
 .container-toggles > .container > .tile > .fullscreen-button {
     position: absolute;
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 1rem;
     right: 1rem;
     z-index: 1;
-
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     visibility: hidden;
+
+    transition: background-color 0.125s ease-in-out;
+}
+
+.container-toggles > .container > .tile > .fullscreen-button:hover {
+    background-color: #d3d4d3;
+    cursor: pointer;
+}
+
+.container-toggles > .container > .tile > .fullscreen-button.exit {
+    padding: 2px;
 }
 
 .container-toggles > .container > .tile > .fullscreen-button > img {
@@ -71,14 +89,8 @@
     visibility: visible;
 }
 
-.container-toggles > .container > .tile > .fullscreen-button:hover {
-    cursor: pointer;
-}
-
 .container-toggles .hide,
 .container-toggles .hide-tile {
-    /* visibility: hidden; */
-    /* display: none; */
     overflow: hidden !important;
     flex: 0 !important;
     width: 0 !important;
