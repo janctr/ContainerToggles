@@ -131,6 +131,29 @@ define([
                     return getQlikObjectContainerId($scope.layout, id);
                 };
 
+                $scope.getContainerSize = function () {
+                    const numVisibleTiles = $scope.masterItemToggles.filter(
+                        (toggle) => toggle.isShowing
+                    ).length;
+
+                    const styles = {};
+
+                    if (numVisibleTiles % 4 === 0) {
+                        styles.flex = '25%';
+                    } else if (numVisibleTiles % 3 === 0) {
+                        styles.flex = '33%';
+                    }
+
+                    if (numVisibleTiles === 4) {
+                        styles.flex = '50%';
+                        styles.height = '50%';
+                    } else if (numVisibleTiles < 4) {
+                        styles.height = '100%';
+                    }
+
+                    return styles;
+                };
+
                 $(document).ready(() => {
                     render($scope.layout);
                 });

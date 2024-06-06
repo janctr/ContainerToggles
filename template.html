@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="tile" ng-repeat="masterItem in masterItems track by $index"
+        <div class="tile" ng-repeat="masterItem in masterItems track by $index" ng-style="getContainerSize()"
             ng-class="{'hide-tile': !masterItemToggles[$index].isShowing}" id="{{ getQlikObjectContainerId($index) }}">
         </div>
     </div>
