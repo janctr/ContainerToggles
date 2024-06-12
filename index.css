@@ -143,4 +143,9 @@
     background-color: #d3d4d3;
     cursor: pointer;
 }
+
+.container-toggles-modal .qv-inner-object,
+.container-toggles-modal .vizlib-filter-wrapper {
+    background-color: inherit !important;
+}
 /*********************/
