@@ -4,6 +4,36 @@ define([
     './properties',
     'css!./index.css',
 ], function (qlik, template, properties) {
+    function openModal(qlikObjectId) {
+        const modal = $(`
+                <div id="container-toggles-modal" class="container-toggles-modal">
+                    <h1>My Modal</h1>
+                    <p>${qlikObjectId}</p>
+                </div>
+
+        `);
+
+        const closeModalButton = $(`
+            <div class="close-modal-button">
+                <img src="${getExitFullscreenIconUrl()}" />
+            </div>
+        `).click(() => {
+            closeModal();
+        });
+
+        $('body').append(modal);
+
+        qlik.currApp()
+            .getObject('container-toggles-modal', qlikObjectId)
+            .then((model) => {
+                $('#container-toggles-modal').append(closeModalButton);
+            });
+    }
+
+    function closeModal() {
+        $('.container-toggles-modal').remove();
+    }
+
     function getQlikObjectContainerId(layout, index) {
         return `${layout.qInfo.qId}_QV_${index}`;
     }
@@ -47,30 +77,12 @@ define([
                     <div class="fullscreen-button">
                         <img src="${getFullScreenIconUrl()}" />
                     </div>
-                    `);
-
-                const exitFullscreenButton = $(`
-                    <div class="fullscreen-button exit">
-                        <img src="${getExitFullscreenIconUrl()}" />
-                    </div>
                 `);
-
-                exitFullscreenButton.toggleClass('hide-button');
-
                 fullscreenButton.click(() => {
-                    exitFullscreenButton.toggleClass('hide-button');
-                    fullscreenButton.toggleClass('hide-button');
-                    setFullscreen(containerId);
-                });
-
-                exitFullscreenButton.click(() => {
-                    exitFullscreenButton.toggleClass('hide-button');
-                    fullscreenButton.toggleClass('hide-button');
-                    exitFullscreen();
+                    openModal(qlikObjectId);
                 });
 
                 $(`#${containerId}`).append(fullscreenButton);
-                $(`#${containerId}`).append(exitFullscreenButton);
             });
     }
 
